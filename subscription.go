@@ -2,6 +2,7 @@ package pubsub
 
 import (
 	"context"
+	"fmt"
 )
 
 type Subscription struct {
@@ -19,9 +20,10 @@ func (sub *Subscription) Next(ctx context.Context) (*Message, error) {
 	select {
 	case msg, ok := <-sub.ch:
 		if !ok {
+			fmt.Println("not ok")
 			return msg, sub.err
 		}
-
+		fmt.Println("ok")
 		return msg, nil
 	case <-ctx.Done():
 		return nil, ctx.Err()
