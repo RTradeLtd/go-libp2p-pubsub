@@ -6,7 +6,7 @@ import (
 	"math/rand"
 	"time"
 
-	pb "github.com/libp2p/go-libp2p-pubsub/pb"
+	pb "github.com/RTradeLtd/go-libp2p-pubsub/pb"
 
 	"github.com/libp2p/go-libp2p-core/host"
 	"github.com/libp2p/go-libp2p-core/peer"
@@ -328,7 +328,7 @@ func (gs *GossipSubRouter) sendRPC(p peer.ID, out *RPC) {
 
 	// piggyback gossip
 	ihave, ok := gs.gossip[p]
-	if ok {
+	if ok { 
 		if !own {
 			out = copyRPC(out)
 			own = true
